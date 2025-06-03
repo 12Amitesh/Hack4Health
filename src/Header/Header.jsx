@@ -1,4 +1,4 @@
-
+import HospitalBodypage from "../Body/HospitalBody";
 const DoctorHeader = () => {
   const user = {
     name: "Dr. Sarah Khan",
@@ -32,6 +32,7 @@ const DoctorHeader = () => {
         />
       </div>
     </header>
+  
     </>
    
   );

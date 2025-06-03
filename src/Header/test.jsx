@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const departments = [
     "Cardiology",
@@ -56,23 +57,29 @@ const DepartmentCard = ({ name, icon, colorIdx }) => (
 );
 
 const HospitalDepartmentsPage = () => (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white">
-        <div className="max-w-4xl mx-auto mt-12 p-4 sm:p-6 md:p-8 rounded-2xl shadow-xl bg-white/80">
+    <div className=" bg-gradient-to-br from-blue-50 to-white " >
+        <div className=" p-6 shadow-xl bg-white/80 " >
             <h1 className="text-3xl sm:text-4xl font-extrabold text-center mb-8 sm:mb-10 text-blue-700 drop-shadow">
                 Hospital Departments
             </h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 justify-items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2 sm:gap-6 justify-items-center">
                 {departments.map((dept, idx) => (
-                    <DepartmentCard
+                    <Link
                         key={dept}
-                        name={dept}
-                        icon={departmentIcons[dept] || "🏥"}
-                        colorIdx={idx}
-                    />
+                        to={`/departments/${dept.toLowerCase()}`}
+                        className="w-full flex justify-center"
+                        style={{ textDecoration: "none" }}
+                    >
+                        <DepartmentCard
+                            name={dept}
+                            icon={departmentIcons[dept] || "🏥"}
+                            colorIdx={idx}
+                        />
+                    </Link>
                 ))}
             </div>
         </div>
     </div>
-);
+)
 
 export default HospitalDepartmentsPage;

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useParams } from "react-router-dom";
 const avatarColors = [
     "bg-blue-400",
     "bg-pink-400",
@@ -16,6 +16,7 @@ const avatarImages = [
 ];
 
 export default function DoctorList() {
+    const {departmentName}=useParams() 
     const doctors = [
         {
             id: 1,
@@ -59,7 +60,7 @@ export default function DoctorList() {
         <div className="min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 py-10">
             <div className="max-w-5xl mx-auto">
                 <h2 className="text-4xl font-extrabold text-center text-blue-800 mb-10 tracking-wide drop-shadow">
-                    Meet Our Cardiologists
+                   {departmentName}
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
                     {doctors.map((doc, idx) => (
