@@ -1,5 +1,7 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams ,useNavigate, Link} from "react-router-dom";
+
+import AssignedPatients from "../../DoctorProfile/PatienList.jsx";
 const avatarColors = [
     "bg-blue-400",
     "bg-pink-400",
@@ -16,7 +18,8 @@ const avatarImages = [
 ];
 
 export default function DoctorList() {
-    const {departmentName}=useParams() 
+    const navigate = useNavigate();
+    const {departmentName,}=useParams() 
     const doctors = [
         {
             id: 1,
@@ -55,15 +58,22 @@ export default function DoctorList() {
             phone: "+91-9876543213",
         },
     ];
+    const handleDetailsClick = () => {
+      
+       navigate(`/departments/${departmentName}/Doctor/ d+${doctors.id}`)
+    };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 py-10">
+        <>
+          <div className="min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 py-10">
             <div className="max-w-5xl mx-auto">
                 <h2 className="text-4xl font-extrabold text-center text-blue-800 mb-10 tracking-wide drop-shadow">
                    {departmentName}
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
                     {doctors.map((doc, idx) => (
+                  <Link key={doc.id} to={`/departments/${departmentName}/Doctor/d${doc.id}`}> 
+                  
                         <div
                             key={doc.id}
                             className="relative bg-white rounded-2xl shadow-xl p-6 flex items-center gap-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl animate-fade-in"
@@ -93,6 +103,7 @@ export default function DoctorList() {
                                
                             </div>
                         </div>
+                  </Link>
                     ))}
                 </div>
             </div>
@@ -113,5 +124,9 @@ export default function DoctorList() {
                 `}
             </style>
         </div>
+      
+        </>
+      
+        
     );
 }

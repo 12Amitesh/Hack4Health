@@ -10,7 +10,7 @@ const managementUser = {
     department: "Medical Administration",
     qualifications: "MBBS, MD (Hospital Administration)",
     experience: "15+ years in hospital management and patient care",
-    bio: "Dr. Priya Sharma leads the hospital's medical team, ensuring the highest standards of patient care and safety. She is passionate about healthcare innovation and staff development.",
+    bio: "Dr. Priya Sharma leads th hospital's medical team, ensuring the highest standards of patient care and safety. She is passionate about healthcare innovation and staff development.",
     office: "Room 201, Admin Block",
     workingHours: "Mon-Fri, 9:00 AM - 5:00 PM",
 };

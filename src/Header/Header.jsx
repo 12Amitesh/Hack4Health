@@ -1,10 +1,15 @@
 import HospitalBodypage from "../Body/HospitalBody";
+
+import { useParams ,useNavigate} from "react-router-dom";
 const DoctorHeader = () => {
+ const navigate = useNavigate();
   const user = {
     name: "Dr. Sarah Khan",
     avatar: "https://i.pravatar.cc/40?img=3", // replace with actual avatar URL
   };
-
+ const adminProfilePage = () => {
+       navigate(`/Profile`)
+    };
   return (
     <>
 
@@ -19,7 +24,7 @@ const DoctorHeader = () => {
         {/* User Name */}
         <div className="text-right">
           <div className="text-sm font-medium text-gray-800">{user.name}</div>
-          <button className="text-xs text-blue-600 hover:underline">
+          <button onClick={adminProfilePage} className="text-xs text-blue-600 hover:underline">
             View Profile
           </button>
         </div>

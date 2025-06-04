@@ -5,24 +5,45 @@ import DoctorHeader from './Header/Header.jsx'
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HospitalBodypage from './Body/HospitalBody.jsx'
-import Department from './departments/Department.jsx';
+import SingleDepartment from './departments/Department.jsx';
+import AssignedPatients from './DoctorProfile/PatienList.jsx';
+import HospitalAdminPage from './HospitalAdmin/HospitalAdminPage.jsx';
+import HospitalDepartmentsPage from './Body/HospitalDepartmentPage..jsx';
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element:<HospitalBodypage/>,
+    children: [
+     
+      { path: "/departments/:departmentName", element: <SingleDepartment/>},
+      { path: "/departments/:departmentName/Doctor/:DocotorId", element: <AssignedPatients />},
+    ],
+  },
+]);
+
 
 function App() {
 
 
   return (
     <>
-
- <Router>
+ <RouterProvider router={router} />;
+     {/* <Router>
       <Routes>
-        <Route path="/" element={  <HospitalBodypage/> } />
-        <Route path="/departments/:departmentName" element={ <Department/>  } />
+        <Route path="/" element={   } />
+        <Route path="" element={  } />
+        <Route path="" element={} />
+        <Route path="Profile" element={<HospitalAdminPage/>} />
       </Routes>
-    </Router>
-    
-    
-     
- 
+    </Router> */}
+
+
     </>
   )
 }
