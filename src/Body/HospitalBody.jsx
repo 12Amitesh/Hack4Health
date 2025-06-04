@@ -10,7 +10,7 @@ export default function HospitalBodypage() {
 
       <DoctorHeader />
       <HospitalDepartmentsPage/>
-    <Outlet/>
+      <Outlet/>
      
 
       <footer>

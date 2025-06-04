@@ -24,7 +24,13 @@ const router = createBrowserRouter([
       { path: "/departments/:departmentName", element: <SingleDepartment/>},
       { path: "/departments/:departmentName/Doctor/:DocotorId", element: <AssignedPatients />},
     ],
+    
   },
+  {
+    path :"/AdminProfilePage",
+    element : < HospitalAdminPage/>
+
+  }
 ]);
 
 

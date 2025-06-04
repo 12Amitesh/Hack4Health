@@ -8,7 +8,7 @@ const DoctorHeader = () => {
     avatar: "https://i.pravatar.cc/40?img=3", // replace with actual avatar URL
   };
  const adminProfilePage = () => {
-       navigate(`/Profile`)
+       navigate(`/AdminProfilePage`)
     };
   return (
     <>
