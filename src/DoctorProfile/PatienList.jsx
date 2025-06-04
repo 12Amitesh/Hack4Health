@@ -76,7 +76,7 @@ const AssignedPatients = () => {
         {doctor ? (
           <div className="space-y-2 text-lg text-gray-700 text-center">
             <p><strong>Name:</strong> {doctor.name}</p>
-            <p><strong>Department:</strong> {doctor.departmentName}</p>
+            <p><strong>Department</strong> {doctor.departmentName}</p>
             <p><strong>Specialization:</strong> {doctor.specialization}</p>
             <p><strong>Qualification:</strong> {doctor.qualification}</p>
             <p><strong>Experience:</strong> {doctor.experience}</p>
