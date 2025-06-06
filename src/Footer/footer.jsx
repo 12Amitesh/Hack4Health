@@ -4,9 +4,10 @@ function footer() {
   return (
   <>
   <footer class="bg-green-100 text-gray-800 mt-10">
-  <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+    <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
     
-    <!-- Logo & About -->
+    
     <div>
       <h2 class="text-2xl font-bold text-green-700">HealthCare+</h2>
       <p class="mt-4 text-sm text-gray-600">
@@ -14,7 +15,7 @@ function footer() {
       </p>
     </div>
 
-    <!-- Quick Links -->
+ 
     <div>
       <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
       <ul class="space-y-2 text-sm">
@@ -25,7 +26,7 @@ function footer() {
       </ul>
     </div>
 
-    <!-- Services -->
+   
     <div>
       <h3 class="text-lg font-semibold mb-4">Our Services</h3>
       <ul class="space-y-2 text-sm">
@@ -36,7 +37,6 @@ function footer() {
       </ul>
     </div>
 
-    <!-- Contact -->
     <div>
       <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
       <p class="text-sm text-gray-600">📍 123 Wellness Street, New Delhi</p>
@@ -45,8 +45,10 @@ function footer() {
     </div>
   </div>
 
-  <!-- Bottom Bar -->
-  <div class="border-t border-gray-300 py-4 text-center text-sm text-gray-500">
+    </footer>
+ 
+
+ 
 
   </>
   )
