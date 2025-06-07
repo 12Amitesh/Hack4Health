@@ -2,11 +2,12 @@ export default function HomePage() {
   return (
     <main className="bg-gradient-to-br from-blue-50 via-white to-blue-50 min-h-screen p-6 md:p-12 space-y-20">
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 py-12 opacity-0 animate-fadeInUp animation-delay-200">
-        <div className="flex-1 space-y-6">
+      <section className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 py-12 opacity-0 animate-fadeInUp animation-delay-200 border-1 border-blue-400 rounded-3xl shadow-2xl bg-white/60 backdrop-blur-md">
+        <div className="flex-1 space-y-6 px-4">
           <h1 className="text-5xl font-extrabold text-blue-900 drop-shadow-lg">
             Your Health, Our Priority
           </h1>
+          <div className="w-24 h-1 mx-auto my-4 bg-gradient-to-r from-teal-400 via-blue-400 to-teal-400 rounded-full opacity-80"></div>
           <p className="text-gray-700 text-lg max-w-xl leading-relaxed">
             Manage appointments, doctors, and patient records easily with our
             all-in-one healthcare platform designed for your convenience.
@@ -15,14 +16,16 @@ export default function HomePage() {
             Get Started
           </button>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 px-4">
           <img
             src="https://images.unsplash.com/photo-1588776814546-0f4ad3c73d18?auto=format&fit=crop&w=600&q=80"
             alt="Healthcare illustration"
-            className="rounded-xl shadow-2xl hover:scale-105 transition-transform duration-500"
+            className="rounded-xl shadow-2xl hover:scale-105 transition-transform duration-500 border-2 border-teal-200"
           />
         </div>
       </section>
+
+      {/* Stats Section */}
 
       {/* Stats Section */}
       <section className="max-w-6xl mx-auto grid grid-cols-3 gap-12 text-center opacity-0 animate-fadeInUp animation-delay-400">
@@ -198,7 +201,7 @@ export default function HomePage() {
         </button>
       </section>
 
-      {/* Animation Styles */}
+      
       <style jsx>{`
         @keyframes fadeInUp {
           from {
