@@ -58,10 +58,10 @@ export default function DoctorList() {
             phone: "+91-9876543213",
         },
     ];
-    const handleDetailsClick = () => {
+    // const handleDetailsClick = () => {
       
-       navigate(`/departments/${departmentName}/Doctor/ d+${doctors.id}`)
-    };
+    //    navigate(`/departments/${departmentName}/Doctor/ d+${doctors.id}`)
+    // };
 
     return (
         <>
