@@ -9,7 +9,7 @@ import SingleDepartment from './departments/Department.jsx';
 import AssignedPatients from './DoctorProfile/PatienList.jsx';
 import HospitalAdminPage from './HospitalAdmin/HospitalAdminPage.jsx';
 import HospitalDepartmentsPage from './Body/HospitalDepartmentPage..jsx';
-
+import HomePage from './Body/HomePage.jsx';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -19,10 +19,14 @@ const router = createBrowserRouter([
   {
     path: "/",
     element:<HospitalBodypage/>,
-    children: [
-     
+    children: [ 
+      {path : "/", element: <HomePage />},
+      {path : "/department", element: <HospitalDepartmentsPage />},
       { path: "/departments/:departmentName", element: <SingleDepartment/>},
       { path: "/departments/:departmentName/Doctor/:DocotorId", element: <AssignedPatients />},
+      {
+        path :"/HospitalAdmin" , element : <HospitalAdminPage />
+      }
     ],
     
   },
