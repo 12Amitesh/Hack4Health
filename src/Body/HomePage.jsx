@@ -12,7 +12,7 @@ export default function HomePage() {
           </h1>
           <div className="w-28 h-1 my-4 bg-blue-200 rounded-full opacity-90"></div>
           <p className="text-gray-700 text-xl max-w-2xl leading-relaxed">
-            Manage appointments,, and patient records easily with our
+            Manage appointments, doctors, and patient records easily with our
             all-in-one healthcare platform designed for your convenience.
           </p>
           <button className="group bg-gradient-to-r from-blue-600 to-teal-500 text-white px-10 py-4 rounded-full shadow-xl hover:from-blue-700 hover:to-teal-600 transition-transform transform hover:-translate-y-1 flex items-center gap-3 text-lg font-semibold">
