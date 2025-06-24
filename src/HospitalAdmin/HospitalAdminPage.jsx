@@ -1,5 +1,6 @@
 import React from "react";
 import { FaUserMd, FaUserTie, FaUserNurse, FaPhone, FaEnvelope } from "react-icons/fa";
+import { useSelector } from 'react-redux';
 
 const managementUser = {
     name: "Dr. Priya Sharma",
@@ -16,11 +17,14 @@ const managementUser = {
 };
 
 export default function HospitalAdminPage() {
+    const {user }= useSelector((state) => state.user);
+    console.log("admin",user.email)
+    if (!user) return <p>Not logged in</p>;
     return (
         <div className="min-h-screen bg-gradient-to-tr from-white via-blue-50 to-purple-100 py-12 px-4">
             <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
                 {managementUser.icon}
-                <h1 className="text-3xl font-extrabold text-purple-700 mb-1">{managementUser.name}</h1>
+                <h1 className="text-3xl font-extrabold text-purple-700 mb-1">{user.email}</h1>
                 <div className="text-lg text-purple-600 mb-2">{managementUser.role}</div>
                 <div className="text-gray-600 mb-2">{managementUser.department}</div>
                 <div className="text-sm text-gray-500 mb-4">{managementUser.qualifications}</div>
@@ -28,7 +32,7 @@ export default function HospitalAdminPage() {
                 <div className="w-full flex flex-col gap-2 mb-4">
                     <div className="flex items-center text-gray-500">
                         <FaEnvelope className="mr-2 text-blue-400" />
-                        <span>{managementUser.email}</span>
+                        <span> data from api {user.email}</span>
                     </div>
                     <div className="flex items-center text-gray-500">
                         <FaPhone className="mr-2 text-green-400" />
