@@ -18,8 +18,8 @@ const handleSubmit = async (e) => {
         const token = response.data.token;
         alert('Login success');
         localStorage.setItem('token', token);
-        console.log(userData);
-        dispatch(setUser(userData)); // <-- This line dispatches the setUser action
+        console.log("login ",userData);
+        dispatch(setUser({user:userData,token :token})); // <-- This line dispatches the setUser action
         navigate('/home');
     } catch (err) {
         alert(err.response?.data?.message || 'Login failed');
