@@ -12,15 +12,15 @@ const DoctorHeader = () => {
  const adminProfilePage = () => {
        navigate("/HospitalAdmin")
     };
-      const userdata= useSelector((state) => state.user);
-      console.log("header",userdata.token)
-      // // console.log(user)
+      const user = useSelector((state) => state.user);
+      console.log("header", user);
+      
       const dispatch = useDispatch();
-        const handleLogout=()=>{
-        console.log("logout ")
+      const handleLogout = () => {
+        console.log("logout ");
         dispatch(logoutUser());
-         navigate("/Login")
-      }
+        navigate("/Login");
+      };
   return (
     <>
      <header className="bg-white shadow-md px-6 py-4 flex justify-between items-center">
@@ -42,7 +42,7 @@ const DoctorHeader = () => {
       <div className="flex items-center gap-4">
         {/* User Name */}
         <div className="text-right">
-        <div className="text-sm font-medium text-gray-800">user data from api admin</div>
+        <div className="text-sm font-medium text-gray-800">{user.email}</div>
         <button onClick={adminProfilePage} className="text-xs text-blue-600 hover:underline">
           View Profile
         </button>

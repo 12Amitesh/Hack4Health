@@ -17,14 +17,14 @@ const managementUser = {
 };
 
 export default function HospitalAdminPage() {
-    const user = useSelector((state) => state.user);
-    // console.log("admin", user);
+    const {user} = useSelector((state) => state.user);
+    console.log("admin", user);
     if (!user) return <p>Not logged in</p>;
     return (
         <div className="min-h-screen bg-gradient-to-tr from-white via-blue-50 to-purple-100 py-12 px-4">
             <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8 flex flex-col items-center">
                 {managementUser.icon}
-                <h1 className="text-3xl font-extrabold text-purple-700 mb-1">user name</h1>
+                <h1 className="text-3xl font-extrabold text-purple-700 mb-1">{user.email}</h1>
                 <div className="text-lg text-purple-600 mb-2">{managementUser.role}</div>
                 <div className="text-gray-600 mb-2">{managementUser.department}</div>
                 <div className="text-sm text-gray-500 mb-4">{managementUser.qualifications}</div>

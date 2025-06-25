@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect ,useState} from "react";
 import { useParams ,useNavigate, Link} from "react-router-dom";
-
+import axios from 'axios';
 import AssignedPatients from "../../DoctorProfile/PatienList.jsx";
 const avatarColors = [
     "bg-blue-400",
@@ -18,8 +18,26 @@ const avatarImages = [
 ];
 
 export default function DoctorList() {
-    const navigate = useNavigate();
+    const d="ortho"
     const {departmentName,}=useParams() 
+    const [doctorsList, setDoctorsList] = useState([]);
+ 
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const res = await axios.get(`http://localhost:2000/doctor/${departmentName}`);
+      setDoctorsList(res.data);
+       
+      } catch (err) {
+        console.error(err);
+     
+      
+      }
+    };
+
+    if (departmentName) fetchDoctors();
+  }, [departmentName]);
+  console.log(doctorsList)
     const doctors = [
         {
             id: 1,
@@ -58,11 +76,7 @@ export default function DoctorList() {
             phone: "+91-9876543213",
         },
     ];
-    // const handleDetailsClick = () => {
-      
-    //    navigate(`/departments/${departmentName}/Doctor/ d+${doctors.id}`)
-    // };
-
+   
     return (
         <>
           <div className="min-h-screen bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 py-10">
@@ -71,20 +85,20 @@ export default function DoctorList() {
                    {departmentName}
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
-                    {doctors.map((doc, idx) => (
-                  <Link key={doc.id} to={`/departments/${departmentName}/Doctor/d${doc.id}`}> 
+                    {doctorsList.map((doc, idx) => (
+                  <Link key={doc._id} to={`/departments/${departmentName}/Doctor/d${doc.id}`}> 
                   
                         <div
-                            key={doc.id}
+                            key={doc._id}
                             className="relative bg-white rounded-2xl shadow-xl p-6 flex items-center gap-6 transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl animate-fade-in"
                             style={{ animationDelay: `${idx * 0.1 + 0.2}s` }}
                         >
                             <div className="relative flex-shrink-0">
-                                <img
+                                {/* <img
                                     src={avatarImages[idx % avatarImages.length]}
                                     alt={doc.name}
                                     className={`w-20 h-20 rounded-full object-cover shadow-lg ring-4 ring-blue-200 border-2 border-white ${avatarColors[idx % avatarColors.length]}`}
-                                />
+                                /> */}
                                
                             </div>
                             <div>
@@ -92,7 +106,7 @@ export default function DoctorList() {
                                     {doc.name}
                                 </h3>
                                 <p className="text-blue-500 font-medium mb-1">
-                                    {doc.specialization}
+                                          "specialization"
                                 </p>
                                 <p className="text-gray-600 text-sm mb-1">
                                     <span className="font-semibold">Qualification:</span> {doc.qualification}

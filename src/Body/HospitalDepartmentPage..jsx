@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const departments = [
-    "Cardiology",
+    "cardio",
     "Neurology",
-    "Orthopedics",
+    "ortho",
     "Pediatrics",
     "Oncology",
     "Radiology",
