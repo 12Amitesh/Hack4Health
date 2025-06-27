@@ -13,7 +13,7 @@ const DoctorHeader = () => {
        navigate("/HospitalAdmin")
     };
       const user = useSelector((state) => state.user);
-      console.log("header", user);
+      console.log("header component",user.user);
       
       const dispatch = useDispatch();
       const handleLogout = () => {
@@ -50,7 +50,7 @@ const DoctorHeader = () => {
 
         {/* Avatar */}
         <img
-        src=""
+       
         alt="User avatar"
         className="w-10 h-10 rounded-full border-2 border-blue-500"
         />

@@ -51,14 +51,7 @@ function App() {
   return (
     <>
  <RouterProvider router={router} />;
-     {/* <Router>
-      <Routes>
-        <Route path="/" element={   } />
-        <Route path="" element={  } />
-        <Route path="" element={} />
-        <Route path="Profile" element={<HospitalAdminPage/>} />
-      </Routes>
-    </Router> */}
+    
 
 
     </>

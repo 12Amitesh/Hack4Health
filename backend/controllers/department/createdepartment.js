@@ -1,5 +1,5 @@
-import Department from "../models/departmentModel.js";
-import Doctor from "../models/doctorModel.js";
+import Department from "../../models/Department_Model/departmentModel.js";
+// import Doctor from "../../models/doctors_Model/doctorModel.js";
 export async function createDepartment(req, res) {
   try {
     const { departmentName } = req.body;
@@ -26,20 +26,6 @@ export async function createDepartment(req, res) {
 
 
 
-
-export async function createDoctor(req, res) {
-  const { name, department } = req.body
-  console.log("hello from doctor")
-  try {
-    const doctor = await Doctor.create({
-      name: name,
-      department: department
-    });
-    res.status(201).json(doctor);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-}
 
 
 

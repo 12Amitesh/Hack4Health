@@ -1,7 +1,7 @@
 import React, { useEffect ,useState} from "react";
 import { useParams ,useNavigate, Link} from "react-router-dom";
 import axios from 'axios';
-import AssignedPatients from "../../DoctorProfile/PatienList.jsx";
+
 const avatarColors = [
     "bg-blue-400",
     "bg-pink-400",
@@ -18,14 +18,15 @@ const avatarImages = [
 ];
 
 export default function DoctorList() {
-    const d="ortho"
-    const {departmentName,}=useParams() 
+   
+    const {departmentName}=useParams() 
     const [doctorsList, setDoctorsList] = useState([]);
- 
+
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
         const res = await axios.get(`http://localhost:2000/doctor/${departmentName}`);
+        console.log("doctor profile api",res)
       setDoctorsList(res.data);
        
       } catch (err) {
@@ -37,45 +38,8 @@ export default function DoctorList() {
 
     if (departmentName) fetchDoctors();
   }, [departmentName]);
-  console.log(doctorsList)
-    const doctors = [
-        {
-            id: 1,
-            name: "Dr. A. Sharma",
-            specialization: "Cardiologist",
-            qualification: "MD, DM (Cardiology)",
-            experience: "10 years",
-            contact: "asharma@hospital.com",
-            phone: "+91-9876543210",
-        },
-        {
-            id: 2,
-            name: "Dr. B. Gupta",
-            specialization: "Cardiologist",
-            qualification: "MBBS, MD",
-            experience: "8 years",
-            contact: "bgupta@hospital.com",
-            phone: "+91-9876543211",
-        },
-        {
-            id: 3,
-            name: "Dr. C. Singh",
-            specialization: "Cardiologist",
-            qualification: "MD (Medicine), DM (Cardiology)",
-            experience: "12 years",
-            contact: "csingh@hospital.com",
-            phone: "+91-9876543212",
-        },
-        {
-            id: 4,
-            name: "Dr. D. Verma",
-            specialization: "Cardiologist",
-            qualification: "MBBS, MD, DM",
-            experience: "15 years",
-            contact: "dverma@hospital.com",
-            phone: "+91-9876543213",
-        },
-    ];
+
+   
    
     return (
         <>
@@ -86,7 +50,7 @@ export default function DoctorList() {
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
                     {doctorsList.map((doc, idx) => (
-                  <Link key={doc._id} to={`/departments/${departmentName}/Doctor/d${doc.id}`}> 
+                  <Link key={doc._id} to={`/departments/${departmentName}/Doctor/${doc._id}`}> 
                   
                         <div
                             key={doc._id}
@@ -94,11 +58,11 @@ export default function DoctorList() {
                             style={{ animationDelay: `${idx * 0.1 + 0.2}s` }}
                         >
                             <div className="relative flex-shrink-0">
-                                {/* <img
+                                <img
                                     src={avatarImages[idx % avatarImages.length]}
                                     alt={doc.name}
                                     className={`w-20 h-20 rounded-full object-cover shadow-lg ring-4 ring-blue-200 border-2 border-white ${avatarColors[idx % avatarColors.length]}`}
-                                /> */}
+                                />
                                
                             </div>
                             <div>
@@ -106,10 +70,10 @@ export default function DoctorList() {
                                     {doc.name}
                                 </h3>
                                 <p className="text-blue-500 font-medium mb-1">
-                                          "specialization"
+                                          {doc.specialization}
                                 </p>
                                 <p className="text-gray-600 text-sm mb-1">
-                                    <span className="font-semibold">Qualification:</span> {doc.qualification}
+                                    <span className="font-semibold">Qualification: {doc.qualification}</span> 
                                 </p>
                                 <p className="text-gray-600 text-sm mb-1">
                                     <span className="font-semibold">Experience:</span> {doc.experience}

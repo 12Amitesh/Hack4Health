@@ -1,4 +1,4 @@
-import {User} from "../models/userModel.js"
+import {User} from "../../models/user_Model/userModel.js"
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 export async function homePageController(req,res){
@@ -11,7 +11,7 @@ export async function createUser(req, res) {
      console.log(req.body)
         
       const { username, email, password } = req.body;
-      const saltRounds = 3;
+      const saltRounds = 10;
       const hashedPassword = await bcrypt.hash(password, saltRounds);
       if (!username || !email || !password) {
         return res.status(400).json({ error: 'Username, email, and password are required' });

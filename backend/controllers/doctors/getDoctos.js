@@ -1,20 +1,9 @@
-import Department from "../models/departmentModel.js";
-import Doctor from "../models/doctorModel.js"
-
-export async function getdepartments(_req, res){
+import Doctor from "../../models/doctors_Model/doctorModel.js";
+import Department from "../../models/Department_Model/departmentModel.js";
+export async function getDoctors(req, res){
      try {
-    
-    const department = await Department.find()
-    console.log(department)
-    res.json(department);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-}
-export async function getDoctors(_req, res){
-     try {
-    
-    const doctors = await Doctor.find().populate("department");
+    console.log("all doctors api")
+    const doctors = await Doctor.find();
     console.log( doctors)
     res.json( doctors);
   } catch (err) {
@@ -27,7 +16,7 @@ export async function getDoctorsByDepartment(req, res) {
     console.log("para",req.params)
     // 1. Find department by name
     const department = await Department.findOne({ departmentName: departmentName });
-    console.log(department)
+    console.log("jj",department)
     if (!department) {
       return res.status(404).json({ error: 'Department not found' });
     }
@@ -41,5 +30,3 @@ export async function getDoctorsByDepartment(req, res) {
     res.status(500).json({ error: 'Server error' });
   }
 }
-
-

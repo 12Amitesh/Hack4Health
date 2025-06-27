@@ -1,4 +1,6 @@
 import React from "react";
+import { CgFontSpacing } from "react-icons/cg";
+import { useParams } from "react-router-dom";
 
 const doctorData = {
   name: "Dr. Priya Sharma",
@@ -25,6 +27,8 @@ const doctorData = {
 };
 
 const DoctorProfile = () => {
+    const pararms=useParams()
+    console.log("doctor profile params ",pararms)
 return (
     <div className="max-w-4xl mx-auto p-8 bg-gradient-to-br from-blue-50 via-white to-green-50 shadow-2xl rounded-2xl mt-12">
         <div className="flex items-center mb-8">

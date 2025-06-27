@@ -1,70 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaUserAlt, FaHeartbeat, FaCalendarAlt, FaStethoscope } from "react-icons/fa";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import axios from 'axios';
 
 // Mock Data
-const doctors = [
-  {
-    id: "d1",
-    name: "Dr. Arjun Mehta",
-    specialization: "Orthopedics",
-    qualification: "MBBS, MS (Ortho)",
-    experience: "12 years",
-    departmentId: "ortho",
-    departmentName: "Orthopedics",
-  },
-  {
-    id: "d2",
-    name: "Dr. Priya Sen",
-    specialization: "Neurology",
-    qualification: "MBBS, DM (Neuro)",
-    experience: "9 years",
-    departmentId: "neuro",
-    departmentName: "Neurology",
-  },
-];
 
-const allPatients = {
-  d1: [
-    {
-      id: 1,
-      name: "Amit Sharma",
-      age: 42,
-      condition: "Fracture",
-      lastVisit: "2025-05-10",
-    },
-    {
-      id: 2,
-      name: "Neha Verma",
-      age: 36,
-      condition: "Arthritis",
-      lastVisit: "2025-04-28",
-    },
-  ],
-  d2: [
-    {
-      id: 3,
-      name: "Ravi Kumar",
-      age: 58,
-      condition: "Seizure",
-      lastVisit: "2025-05-15",
-    },
-  ],
-};
 
-const getInitials = (name) => {
-  return name
-    .split(" ")
-    .map((n) => n[0])
-    .join("")
-    .toUpperCase();
-};
+
+
 
 const AssignedPatients = () => {
+  
   const { departmentName, DocotorId } = useParams();
+  // console.log("assigned patienrrs",departmentName,DocotorId)
+const [doctor, setDoctor] = useState({
+  _id:"",
+  patientName:"",
+   disease:""
+   , 
+   doctor:"", 
+   departmentName:"", __v:""
+}
+);
+const [patients, setPatients] = useState([]);
 
-  const doctor = doctors.find((d) => d.id === DocotorId);
-  const patients = allPatients[DocotorId] || [];
+useEffect(() => {
+  
+  async function fetchDoctorPatient() {
+      try {
+        const res = await axios.get(`http://localhost:2000/patients`);
+        console.log("doctor profile api", res.data[0]);
+        setDoctor(res.data[0] || {}); // Set the first doctor object or empty if not found
+        setPatients(res.data || []);
+      } catch (error) {
+        console.error("Failed to fetch doctor and patients", error);
+      }
+   
+  }
+
+  fetchDoctorPatient();
+}, [departmentName, DocotorId]);
 
   return (
     <div className="max-w-5xl mx-auto p-8 mt-10 bg-white shadow-2xl rounded-2xl animate-fade-in space-y-10">
@@ -75,11 +51,11 @@ const AssignedPatients = () => {
         </h1>
         {doctor ? (
           <div className="space-y-2 text-lg text-gray-700 text-center">
-            <p><strong>Name:</strong> {doctor.name}</p>
-            <p><strong>Department</strong> {doctor.departmentName}</p>
-            <p><strong>Specialization:</strong> {doctor.specialization}</p>
-            <p><strong>Qualification:</strong> {doctor.qualification}</p>
-            <p><strong>Experience:</strong> {doctor.experience}</p>
+            <p><strong>Name:</strong> {doctor.doctor.name}</p>
+            <p><strong>Department</strong> {doctor.departmentName.departmentName}</p>
+            <p><strong>Specialization:</strong> {doctor.doctor.specialization}</p>
+
+          
             <p><strong>Assigned Patients:</strong> {patients.length}</p>
           </div>
         ) : (
@@ -94,14 +70,14 @@ const AssignedPatients = () => {
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {patients.map((patient) => (
               <div
-                key={patient.id}
+                key={patient}
                 className="p-6 bg-blue-50 rounded-xl shadow-md border border-blue-200 hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="w-12 h-12 bg-blue-500 text-white font-bold rounded-full flex items-center justify-center text-lg shadow-md">
-                    {getInitials(patient.name)}
+                    {}
                   </div>
-                  <h2 className="text-xl font-semibold text-gray-800">{patient.name}</h2>
+                  <h2 className="text-xl font-semibold text-gray-800">{patient.patientName}</h2>
                 </div>
                 <div className="space-y-2 text-gray-700">
                   <p className="flex items-center gap-2">
@@ -110,7 +86,7 @@ const AssignedPatients = () => {
                   </p>
                   <p className="flex items-center gap-2">
                     <FaHeartbeat className="text-red-500" />
-                    <strong>Condition:</strong> {patient.condition}
+                    <strong>Condition:</strong> {patient.disease}
                   </p>
                   <p className="flex items-center gap-2">
                     <FaCalendarAlt className="text-green-500" />

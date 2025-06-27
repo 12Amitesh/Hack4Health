@@ -1,4 +1,4 @@
-import  Patient  from "../../models/patienModel.js";
+import  Patient  from "../../models/patient_Model/patienModel.js";
 
 export async function createPatient(req, res) {
   try {
@@ -10,9 +10,9 @@ export async function createPatient(req, res) {
     }
 
     // Check if department already exists
-    const existingDepartment = await  Patient.findOne({ patientName });
-    if (existingDepartment) {
-      return res.status(409).json({ error: "Department already exists" });
+    const existingPatient = await  Patient.findOne({ patientName });
+    if (existingPatient) {
+      return res.status(409).json({ error: "Patient already exists" });
     }
     const patient=patientName
 
