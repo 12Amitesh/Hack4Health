@@ -9,7 +9,7 @@ import SingleDepartment from './departments/Department.jsx';
 import AssignedPatients from './DoctorProfile/PatienList.jsx';
 import HospitalAdminPage from './HospitalAdmin/HospitalAdminPage.jsx';
 import HospitalDepartmentsPage from './Body/HospitalDepartmentPage..jsx';
-import HomePage from './Body/HomePage.jsx';
+import HomePage from './HomePage.jsx';
 import Login from './auth/LoginPage.jsx';
 import {
   createBrowserRouter,
@@ -17,30 +17,31 @@ import {
 } from "react-router-dom";
 
 const router = createBrowserRouter([
-  {
+     {
     path: "/",
-    element:<HospitalBodypage/>,
-    children: [ 
-      {path : "/home", element: <HomePage />},
-      {path : "/department", element: <HospitalDepartmentsPage />},
-      { path: "/departments/:departmentName", element: <SingleDepartment/>},
-      { path: "/departments/:departmentName/Doctor/:DocotorId", element: <AssignedPatients />},
-      {
-        path :"/HospitalAdmin" , element : <HospitalAdminPage />
-      },
-      {
-        path:"/SignUp", element: <Signup/>
-      },
-      {
-        path:"/Login", element: <Login/>
-      },
-    ],
-    
+    element: <HomePage />
   },
   {
-    path :"/AdminProfilePage",
-    element : < HospitalAdminPage/>
-
+    path: "/home",
+    element: <HospitalBodypage />,
+    children: [
+      { path: "departments", element: <HospitalDepartmentsPage /> },
+      { path: "departments/:departmentName", element: <SingleDepartment /> },
+      { path: "departments/:departmentName/Doctor/:DoctorId", element: <AssignedPatients /> },
+      { path: "HospitalAdmin", element: <HospitalAdminPage /> }
+    ]
+  },
+  {
+    path: "/AdminProfilePage",
+    element: <HospitalAdminPage />
+  },
+  {
+    path: "/signup",
+    element: <Signup />
+  },
+  {
+    path: "/login",
+    element: <Login />
   }
 ]);
 
@@ -50,7 +51,7 @@ function App() {
 
   return (
     <>
- <RouterProvider router={router} />;
+ <RouterProvider router={router} />
     
 
 

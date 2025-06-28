@@ -50,7 +50,7 @@ const HospitalDepartmentsPage = () => {
                     {departmentsData.map((dept, idx) => (
                         <Link
                             key={dept._id}
-                            to={`/departments/${dept.departmentName}`}
+                            to={`${dept.departmentName}`}
                             className="w-full flex justify-center"
                             style={{ textDecoration: "none" }}
                         >

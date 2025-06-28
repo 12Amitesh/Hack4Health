@@ -1,7 +1,17 @@
-import Doctor from "../assets/Doctor.png"
+import { useNavigate } from "react-router-dom";
+import Doctor from "./assets/Doctor.png"
+import DoctorHeader from "./Header/Header";
 export default function HomePage() {
+  const navigate = useNavigate();
+ function handleAdminHomepage(){
+    console.log("admin home  page")
+   
+    navigate("/home");
+  }
   return (
-    <main className="bg-gradient-to-br from-blue-50 via-white to-blue-50 min-h-screen p-6 md:p-12 space-y-20 opacity-0 animate-fadeInPage">
+    <>
+        <DoctorHeader/>
+        <main className="bg-gradient-to-br from-blue-50 via-white to-blue-50 min-h-screen p-6 md:p-12 space-y-20 opacity-0 animate-fadeInPage">
       {/* Hero Section */}
       <section className="relative max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 py-16 opacity-0 animate-fadeInUp animation-delay-200 rounded-3xl shadow-2xl bg-white">
         <div className="flex-1 space-y-7 px-4 relative z-10">
@@ -15,7 +25,7 @@ export default function HomePage() {
             Manage appointments, doctors, and patient records easily with our
             all-in-one healthcare platform designed for your convenience.
           </p>
-          <button className="group bg-gradient-to-r from-blue-600 to-teal-500 text-white px-10 py-4 rounded-full shadow-xl hover:from-blue-700 hover:to-teal-600 transition-transform transform hover:-translate-y-1 flex items-center gap-3 text-lg font-semibold">
+          <button onClick={handleAdminHomepage} className="group bg-gradient-to-r from-blue-600 to-teal-500 text-white px-10 py-4 rounded-full shadow-xl hover:from-blue-700 hover:to-teal-600 transition-transform transform hover:-translate-y-1 flex items-center gap-3 text-lg font-semibold">
             <svg className="w-6 h-6 text-white group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" /></svg>
             Get Started
           </button>
@@ -319,5 +329,8 @@ export default function HomePage() {
         }
       `}</style>
     </main>
+    </>
+
+    
   );
 }

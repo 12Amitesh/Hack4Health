@@ -7,6 +7,8 @@ const doctorSchema = new mongoose.Schema({
     ref: 'Department',
     required: true
   }
+  
+  
 });
 const Doctor=mongoose.model('Doctor', doctorSchema);
 export default Doctor

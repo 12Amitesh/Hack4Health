@@ -135,3 +135,13 @@ const allPatients = {
     },
   ],
 };
+
+//  const user = useSelector((state) => state.user);
+//       console.log("header component",user.user);
+      
+//       const dispatch = useDispatch();
+//       const handleLogout = () => {
+//         console.log("logout ");
+//         dispatch(logoutUser());
+//         navigate("/Login");
+//       };

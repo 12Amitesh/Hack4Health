@@ -19,7 +19,9 @@ const avatarImages = [
 
 export default function DoctorList() {
    
-    const {departmentName}=useParams() 
+    const name=useParams() 
+    console.log("name of the department",name)
+    const {departmentName}=name
     const [doctorsList, setDoctorsList] = useState([]);
 
   useEffect(() => {
@@ -50,7 +52,7 @@ export default function DoctorList() {
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
                     {doctorsList.map((doc, idx) => (
-                  <Link key={doc._id} to={`/departments/${departmentName}/Doctor/${doc._id}`}> 
+                  <Link key={doc._id} to={`Doctor/${doc._id}`}> 
                   
                         <div
                             key={doc._id}
